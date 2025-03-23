@@ -1,0 +1,35 @@
+import random
+
+def roll_dice():
+    return random.randint(1, 6)
+
+def play_game():
+    print("🎲 Welcome to the Dice Betting Game!")
+    print("Rules: If the sum is >15, you lose $1. If the sum is <8, you win $1. Otherwise, it's a draw.\n")
+
+    balance = 0
+    rounds = int(input("How many rounds do you want to play? "))
+
+    for i in range(1, rounds + 1):
+        d1 = roll_dice()
+        d2 = roll_dice()
+        d3 = roll_dice()
+        total = d1 + d2 + d3
+
+        print(f"Round {i}: You rolled {d1}, {d2}, {d3} → Total = {total}")
+
+        if total > 15:
+            balance -= 1
+            print("You lost $1 😞")
+        elif total < 8:
+            balance += 1
+            print("You won $1 🎉")
+        else:
+            print("No money won or lost this round.")
+
+        print(f"Current balance: ${balance}\n")
+
+    print(f"🧾 Game over! Final balance: ${balance}")
+
+if __name__ == "__main__":
+    play_game()
